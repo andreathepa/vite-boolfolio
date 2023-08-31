@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios';
 export default {
-    name: 'AppMain',
+    name: 'ProjectList',
     data(){
       return{
         baseUrl:'http://localhost:8000',
