@@ -1,9 +1,15 @@
 <script>
 import axios from 'axios';
-import {store} from '../store.js'
+import {store} from '../store.js';
+import ProjectCard from '../components/ProjectCard.vue'
 
 export default {
     name: 'ProjectList',
+
+    components:{
+      ProjectCard
+    },
+
     data(){
       return{
         store,
@@ -31,12 +37,6 @@ export default {
         })
 
       },
-      truncateText(text){
-        if(text.length > 50){
-          return text.substr(0,50) + '...';
-        }
-        return text;
-      }
     }
   }
 </script>
@@ -53,15 +53,7 @@ export default {
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-4" v-for="project in projects" :key="project.id">
-        <div class="card my-3">
-          <div class="card-header bg-primary text-light">
-            {{ project.title }}
-          </div>
-          <div class="card-body">
-            {{ truncateText(project.content) }}
-          </div>  
-
-        </div>
+        <ProjectCard :project="project" />
       </div>
 
     </div>
