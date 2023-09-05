@@ -1,10 +1,12 @@
 <script>
 import axios from 'axios';
+import {store} from '../store.js'
+
 export default {
     name: 'ProjectList',
     data(){
       return{
-        baseUrl:'http://localhost:8000',
+        store,
         projects: [],
         }
     },
@@ -15,7 +17,7 @@ export default {
       getProjects(){
 
 
-        axios.get(`${this.baseUrl}/api/projects`).then(( response) => {
+        axios.get(`${this.store.baseUrl}/api/projects`).then(( response) => {
           if(response.data.success){
             this.projects = response.data.results;
 
